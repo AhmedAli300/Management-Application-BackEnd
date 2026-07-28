@@ -13,18 +13,6 @@ A full-stack task board management application built with a Node.js/Express REST
 
 ---
 
-## Environment Configuration
-
-Create a `.env` file inside `Management-Application-BackEnd` using `.env.example`:
-
-```env
-PORT=3000
-SECRET=my_jwt_api_secret
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/managementApplication
-```
-
----
-
 ## Project Setup & Execution
 
 ### 1. Backend Service
