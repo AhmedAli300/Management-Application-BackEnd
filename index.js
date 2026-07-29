@@ -24,6 +24,10 @@ mongoose
   .connect(mongoURI)
   .then(() => {
     console.log("Connected to database successfully");
+
+    server.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   })
   .catch((err) => {
     console.error("Database connection error:", err);
