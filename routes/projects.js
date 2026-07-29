@@ -11,7 +11,7 @@ const {
     removeMember
 } = require('../controllers/projects');
 
-// All project routes require authentication
+
 router.use(auth);
 
 router.route('/')

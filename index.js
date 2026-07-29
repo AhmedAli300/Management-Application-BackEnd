@@ -41,6 +41,7 @@ app.use(express.json());
 const usersRoute = require("./routes/user");
 const projectsRoute = require("./routes/projects");
 const tasksRoute = require("./routes/tasks");
+const ApiError = require("./utils/ApiErrors");
 
 
 app.use("/user", usersRoute);
@@ -70,7 +71,7 @@ io.on("connection", (socket) => {
 
 
 app.use((req, res, next) => {
-  res.status(404).json({ message: "Not Found" });
+  next(new ApiError(404 , "Not Found"))
 });
 
 // Error handling middleware
@@ -81,6 +82,4 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+

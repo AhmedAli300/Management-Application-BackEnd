@@ -1,12 +1,18 @@
 const userModel = require('../models/user')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const ApiError = require('../utils/ApiErrors')
 
 let getAllUsers = async (req , res)=>{
-
+  try {
     let users = await userModel.find()
-
+  
     res.status(200).json({data:users})
+    
+  } catch (error) {
+    next(new ApiError(404 , error.message))
+  }
+
 }
 
 let saveUser = async (req , res)=>{
@@ -17,7 +23,7 @@ let saveUser = async (req , res)=>{
 
     res.status(201).json({message: 'success' , data: newUser })
    } catch (err) {
-    res.status(400).json(err.message)
+    next(new ApiError(400 , err.message))
    }
 }
 
