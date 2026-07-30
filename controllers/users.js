@@ -28,56 +28,82 @@ let saveUser = async (req , res)=>{
 }
 
 let login = async (req , res)=>{
-    let {email , password } =  req.body
+  try {
 
+    let {email , password } =  req.body
+    
     if(!email || !password){
       return  res.status(400).json({message: "you must provide email and password"}) 
     }
-
+    
     let user = await userModel.findOne({email:email})
-
+    
     if(!user){
       return res.status(404).json({message: "invalid email or password"})
     }
-
+    
     let isValid = await bcrypt.compare(password , user.password)
-
+    
     if(!isValid){
       return  res.status(401).json({message: "invalid email or password"})
     }
-
+    
     let token  = jwt.sign({id:user._id , email:user.email , role: user.role } , process.env.SECRET )
-
+    
     res.status(200).json({ token : token })
+  } catch (error) {
+    next(new ApiError(400 , error.message))
+  }
 
 }
 
 
 let updatePassword = async function (req , res){
-    let {currentPassword , password} = req.body
+ try {
 
-    if(!currentPassword || !password){
-        
-      return res.status(400).josn({status:"error" , message: 'you must provide current or password'})
-    }
+   let {currentPassword , newPassword} = req.body
 
-    let user = await userModel.findById(req.id)
+   if(!currentPassword || !newPassword){
+       
+     return res.status(400).json({status:"error" , message: 'you must provide current and new password'})
+   }
 
-    let isValid = await bcrypt.compare(currentPassword , user.password)
+   let user = await userModel.findById(req.id)
 
-    if(!isValid){
-      
-      return res.status(401).json({status: "fail" , message:"incorrect password"})
+   if (!user) {
+   
+     return res.status(404).json({status: "fail", message: "User not found"});
+   
+   }
 
-    }
+   let isValid = await bcrypt.compare(currentPassword , user.password)
 
-    user.password = password
+   if(!isValid){
+     
+     return res.status(401).json({status: "fail" , message:"incorrect password"})
 
-    await user.save()
+   }
 
-    let token  = jwt.sign({id:user._id , email:user.email , role: user.role } , process.env.SECRET , {expiresIn : '1h'} )
+   if (currentPassword === newPassword) {
+     return res.status(400).json({
+         status: "fail",
+         message: "New password must be different from current password."
+     });
+   
+   }
 
-    res.status(200).json({ token : token })
+   user.password = newPassword
+
+   await user.save()
+
+   let token  = jwt.sign({id:user._id , email:user.email , role: user.role } , process.env.SECRET , {expiresIn : '1h'} )
+
+   res.status(200).json({ token : token })
+ }catch (error) {
+   
+  next(new ApiError(400 , error.message))
+ 
+  }
 }
 
 module.exports={getAllUsers , saveUser , login , updatePassword}
