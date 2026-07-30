@@ -1,4 +1,4 @@
-# 🚀 Management Application - Backend
+# Management Application - Backend
 
 RESTful API built with Node.js, Express, MongoDB Atlas, JWT Authentication, and Socket.IO for a project management application.
 
@@ -11,7 +11,7 @@ RESTful API built with Node.js, Express, MongoDB Atlas, JWT Authentication, and 
 
 ---
 
-## ✨ Features
+##  Features
 
 - JWT Authentication
 - User Management
@@ -24,7 +24,7 @@ RESTful API built with Node.js, Express, MongoDB Atlas, JWT Authentication, and 
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - Node.js
 - Express.js
@@ -37,7 +37,7 @@ RESTful API built with Node.js, Express, MongoDB Atlas, JWT Authentication, and 
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 controllers
@@ -51,7 +51,7 @@ index.js
 
 ---
 
-## 🏗 Architecture
+##  Architecture
 
 The backend follows a layered architecture.
 
@@ -63,7 +63,7 @@ The backend follows a layered architecture.
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 Clone repository
 
@@ -93,7 +93,7 @@ npm start
 
 ---
 
-## 🌱 Environment Variables
+## Environment Variables
 
 | Variable | Description |
 |----------|-------------|
@@ -111,7 +111,7 @@ Update the `MONGO_URI` inside the `.env` file before running the project.
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 Run API tests
 
@@ -121,12 +121,71 @@ npm test
 
 ---
 
-## 📌 API Endpoints
+## API Documentation
 
-Authentication
+A Postman Collection is included in this repository to simplify testing the API endpoints.
 
-- Login
-- Register
+### Collection Location
+
+```
+postman/Management-Application.postman_collection.json
+
+
+### How to Use
+
+1. Import the collection into Postman.
+2. Create an environment with the following variables:
+
+| Variable | Value |
+|----------|------|
+| base_url | https://management-application-back-end.vercel.app |
+| token | *(Leave empty)* |
+
+3. Run the **Login** request using one of the demo accounts.
+4. Copy the returned JWT token.
+5. Set the `token` environment variable.
+6. Use the token as a **Bearer Token** for all protected endpoints.
+
+The collection includes requests for:
+
+- Authentication
+- Projects
+- Tasks
+
+---
+
+---
+
+## API Endpoints
+
+### Authentication
+
+- `POST /user` — Register a new user
+- `POST /user/login` — Login
+- `PATCH /user/updateMyPassword` — Update password
+
+### Users
+
+- `GET /user` — Get all users
+- `GET /user/:id` — Get user by ID
+- `PATCH /user/:id` — Update user
+- `DELETE /user/:id` — Delete user
+
+### Projects
+
+- `GET /projects` — Get all projects
+- `GET /projects/:id` — Get project by ID
+- `POST /projects` — Create project
+- `PATCH /projects/:id` — Update project
+- `DELETE /projects/:id` — Delete project
+
+### Tasks
+
+- `GET /tasks` — Get all tasks
+- `GET /tasks/:id` — Get task by ID
+- `POST /tasks` — Create task
+- `PATCH /tasks/:id` — Update task
+- `DELETE /tasks/:id` — Delete task
 
 Projects
 

@@ -1,0 +1,248 @@
+{
+  "info": {
+    "_postman_id": "0a78bd2a-0db5-4c45-8346-fe49dd74c130",
+    "name": "Management Application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30664304"
+  },
+  "item": [
+    {
+      "name": "Management Application",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"your-email@example.com\",\r\n    \"password\":\"your-password\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/user/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "user",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{base_url}}/projects",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"React Dashboard\",\r\n    \"description\":\"Management Application\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/projects",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{base_url}}/tasks",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\":\"Create Login Page\",\r\n    \"description\":\"React Login\",\r\n    \"project\":\"6a6b1652bd27f6870ec9b002\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/tasks",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{base_url}}/projects/6a6b1652bd27f6870ec9b002",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/projects/6a6b1652bd27f6870ec9b002",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            "6a6b1652bd27f6870ec9b002"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{base_url}}/tasks/6a6b174cbd27f6870ec9b009",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/tasks/6a6b174cbd27f6870ec9b009",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "6a6b174cbd27f6870ec9b009"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{base_url}}/projects/6a6b1652bd27f6870ec9b002",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"React Dashboard\",\r\n    \"description\":\"Management Application update\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/projects/6a6b1652bd27f6870ec9b002",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            "6a6b1652bd27f6870ec9b002"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{base_url}}/projects/6a6b1652bd27f6870ec9b002",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/projects/6a6b1652bd27f6870ec9b002",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            "6a6b1652bd27f6870ec9b002"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "supabase_service_role_api_key_0xmq",
+      "secret": true
+    }
+  ]
+}
