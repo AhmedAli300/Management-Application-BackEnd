@@ -22,6 +22,7 @@
     "validator": "^13.15.15"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
     "supertest": "^7.2.2"
   }
 }
